@@ -1,0 +1,41 @@
+<html lang="en">
+    <head>
+        <title>Slack alphabet emoji generator</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <meta charset="utf-8">
+    </head>
+    <body class="p-12">
+        <div id="alphabetizer" class="container mx-auto">
+            <div class="flex text-center">
+                <div v-for="letter in letters" class="flex-1" @click="addLetter(letter)">
+                    <img class="w-10" :src="letterToImage(letter)" :alt="letter">
+                </div>
+            </div>
+            <div class="w-full mt-12">
+                <label for="text" class="block text-sm font-medium text-gray-700">
+                    Text to emoji:
+                </label>
+                <div class="mt-2">
+                    <textarea id="text" name="text" rows="3" v-model="text"
+                              class="block w-full border border-gray-300 text-sm rounded-md p-4"></textarea>
+                </div>
+            </div>
+            <div class="w-full mt-12 flex justify-center text-center">
+                <div v-for="letter in output">
+                    <img class="w-10" :src="letter" :alt="letter">
+                </div>
+            </div>
+            <div class="w-full mt-12">
+                <label for="emojis" class="block text-sm font-medium text-gray-700">
+                    Emoji-code:
+                </label>
+                <div class="mt-2">
+                    <textarea id="emojis" name="emojis" rows="3" v-model="emojis"
+                              class="block w-full border border-gray-300 text-sm rounded-md p-4"></textarea>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="./alphabetizer.js"></script>
+</html>
